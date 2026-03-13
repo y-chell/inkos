@@ -1,6 +1,6 @@
 {
   "name": "@actalk/inkos-core",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "InkOS core: models, agents, pipeline, LLM integration",
   "type": "module",
   "main": "dist/index.js",
@@ -11,7 +11,10 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "genres"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,10 +28,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "js-yaml": "^4.1.1",
     "openai": "^4.80.0",
     "zod": "^3.24.0"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "typescript": "^5.8.0",
     "vitest": "^3.0.0"
   }
