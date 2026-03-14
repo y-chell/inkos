@@ -745,8 +745,19 @@ ${matrix}`,
       },
     ], { temperature: 0.3, maxTokens: 16384 });
 
-    await writeFile(join(storyDir, "parent_canon.md"), response.content, "utf-8");
-    return response.content;
+    // Append deterministic meta block (LLM may hallucinate timestamps)
+    const metaBlock = [
+      "",
+      "---",
+      "meta:",
+      `  parentBookId: "${parentBookId}"`,
+      `  parentTitle: "${parentBook.title}"`,
+      `  generatedAt: "${new Date().toISOString()}"`,
+    ].join("\n");
+    const canon = response.content + metaBlock;
+
+    await writeFile(join(storyDir, "parent_canon.md"), canon, "utf-8");
+    return canon;
   }
 
   // ---------------------------------------------------------------------------
