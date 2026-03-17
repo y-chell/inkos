@@ -360,6 +360,7 @@ export class PipelineRunner {
 
       // Update truth files
       const storyDir = join(bookDir, "story");
+      await mkdir(storyDir, { recursive: true });
       if (reviseOutput.updatedState !== "(状态卡未更新)") {
         await writeFile(join(storyDir, "current_state.md"), reviseOutput.updatedState, "utf-8");
       }
@@ -581,6 +582,7 @@ export class PipelineRunner {
 
           // Update state files from revision
           const storyDir = join(bookDir, "story");
+          await mkdir(storyDir, { recursive: true });
           if (reviseOutput.updatedState !== "(状态卡未更新)") {
             await writeFile(join(storyDir, "current_state.md"), reviseOutput.updatedState, "utf-8");
           }
@@ -596,6 +598,7 @@ export class PipelineRunner {
 
     // 4. Save chapter (original or revised)
     const chaptersDir = join(bookDir, "chapters");
+    await mkdir(chaptersDir, { recursive: true });
     const paddedNum = String(chapterNumber).padStart(4, "0");
     const title = output.title;
     const filename = `${paddedNum}_${title.replace(/[/\\?%*:|"<>]/g, "").replace(/\s+/g, "_").slice(0, 50)}.md`;
