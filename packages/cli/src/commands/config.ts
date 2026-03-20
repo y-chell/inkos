@@ -165,7 +165,7 @@ configCommand
   .command("set-model")
   .description("Set model override for a specific agent (with optional provider routing)")
   .argument("<agent>", `Agent name (${KNOWN_AGENTS.join(", ")})`)
-  .argument("<model>", "Model name (e.g., gpt-4o, gemini-2.5-flash)")
+  .argument("<model>", "Model name")
   .option("--base-url <url>", "API base URL (for different provider)")
   .option("--provider <provider>", "Provider type (openai / anthropic / custom)")
   .option("--api-key-env <envVar>", "Env variable name for API key (e.g., PACKYAPI_KEY)")
